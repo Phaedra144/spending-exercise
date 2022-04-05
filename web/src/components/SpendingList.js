@@ -9,7 +9,7 @@ export default function SpendingList({ spendings, setSpendings }) {
 
   useEffect(() => {
     setLoading(true);
-    fetch(`http://localhost:5000/spendings`, {
+    fetch(`http://localhost:8080/spendings`, {
       method: "GET",
       headers: { "Content-Type": "application/json" },
     })
@@ -32,7 +32,7 @@ export default function SpendingList({ spendings, setSpendings }) {
       .finally(() => {
         setLoading(false);
       });
-  }, []);
+  }, [setSpendings]);
 
   if (loading) return <Loader />;
 
