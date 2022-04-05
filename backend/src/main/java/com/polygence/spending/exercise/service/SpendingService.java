@@ -1,6 +1,6 @@
 package com.polygence.spending.exercise.service;
 
-import com.polygence.spending.exercise.entity.SpendingEntity;
+import com.polygence.spending.exercise.entity.Spending;
 import com.polygence.spending.exercise.model.SpendingItem;
 import com.polygence.spending.exercise.repository.SpendingRepository;
 import org.modelmapper.ModelMapper;
@@ -29,6 +29,6 @@ public class SpendingService {
     }
 
     public void createSpendingItem(SpendingItem spendingItem) {
-        spendingRepository.save(mapper.map(spendingItem, SpendingEntity.class));
+        spendingRepository.save(mapper.map(spendingItem, Spending.class));
     }
 }

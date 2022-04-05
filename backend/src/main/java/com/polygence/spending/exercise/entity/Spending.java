@@ -1,13 +1,21 @@
 package com.polygence.spending.exercise.entity;
 
+import lombok.Data;
+
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import java.time.LocalDateTime;
 
+@Data
 @Entity
-public class SpendingEntity {
+@Table
+public class Spending {
 
     @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
     private long id;
     private String description;
     private int amount;
