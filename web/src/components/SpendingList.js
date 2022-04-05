@@ -1,15 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { FiDollarSign } from "react-icons/fi";
-import { DateTime } from "luxon";
 import Loader from "./Loader";
-import {
-  ErrorMessage,
-  Spending,
-  IconWrapper,
-  TextWrapper,
-  Amount,
-  AmountWrapper,
-} from "../styles/ComponentStyles";
+import { ErrorMessage } from "../styles/ComponentStyles";
+import SpendingItem from "./SpendingItem";
 
 export default function SpendingList({ spendings, setSpendings }) {
   const [loading, setLoading] = useState(true);
@@ -62,24 +54,14 @@ export default function SpendingList({ spendings, setSpendings }) {
       )}
       {spendings.length > 0 &&
         spendings.map((spending) => (
-          <Spending key={spending.id}>
-            <IconWrapper>
-              <FiDollarSign color="var(--color-blue)" />
-            </IconWrapper>
-            <TextWrapper>
-              <h3>{spending.description}</h3>
-              <p>
-                {DateTime.fromISO(spending.spent_at).toFormat(
-                  "t - MMMM dd, yyyy"
-                )}
-              </p>
-            </TextWrapper>
-            <AmountWrapper>
-              <Amount currency={spending.currency}>
-                {(spending.amount / 100).toFixed(2)}
-              </Amount>
-            </AmountWrapper>
-          </Spending>
+          <SpendingItem
+            key={spending.id}
+            id={spending.id}
+            date={spending.spent_at}
+            currency={spending.currency}
+            description={spending.description}
+            amount={spending.amount}
+          />
         ))}
     </>
   );
