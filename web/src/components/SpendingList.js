@@ -1,17 +1,10 @@
-import React, { useEffect } from "react";
-import Loader from "./Loader";
-import { ErrorMessage } from "../styles/ComponentStyles";
+import React from "react";
 import SpendingItem from "./SpendingItem";
-import { getAllSpendings } from "../lib/api";
-import useHttp from "../hooks/use-http";
 
-export default function SpendingList() {
-  const { sendRequest, data: loadedSpendings, error, status } = useHttp(getAllSpendings, true);
+import { ErrorMessage } from '../styles/ComponentStyles';
+import Loader from './Loader';
 
-  console.log(JSON.stringify(loadedSpendings));
-  useEffect(() => {
-    sendRequest();
-  }, [sendRequest]);
+export default function SpendingList({ data: loadedSpendings, error, status }) {
 
   if (status === 'pending') {
     return (
