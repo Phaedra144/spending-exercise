@@ -8,7 +8,7 @@ import useHttp from './hooks/use-http';
 
 export default function App() {
 
-  const [spendings, setSpendings] = useState();
+  const [spendings, setSpendings] = useState([]);
 
   const {
     sendRequest: getSpendings,
@@ -18,7 +18,8 @@ export default function App() {
   } = useHttp(getAllSpendings, true);
 
   const { 
-    sendRequest: addSpending, 
+    sendRequest: addSpending,
+    error: createSendingError, 
     status: createSendingStatus 
   } = useHttp(createSpending, false);
 
@@ -40,6 +41,7 @@ export default function App() {
       <Layout>
         <SpendingForm
           onNewItem={newSpendingHandler}
+          error={createSendingError}
           status={createSendingStatus}
         />
         <FiltersAndOrderings />

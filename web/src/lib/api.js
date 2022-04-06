@@ -30,13 +30,12 @@ export async function createSpending(spendingData) {
       'Content-Type': 'application/json',
     },
   });
-  const data = await response.json();
+  const data = await response.text();
 
   if (!response.ok) {
     throw new Error(data.message || 'Could not save spending.');
   }
 
-  return null;
 }
 
 

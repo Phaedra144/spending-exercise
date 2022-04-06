@@ -4,7 +4,7 @@ import { SelectStyles } from '../styles/SelectStyles';
 import { FormStyles } from '../styles/ComponentStyles';
 import Loader from './Loader';
 
-export default function SpendingForm({ onNewItem, status }) {
+export default function SpendingForm({ onNewItem, error, status }) {
 
   const descriptionRef = useRef();
   const amountRef = useRef();
