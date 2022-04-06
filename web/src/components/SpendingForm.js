@@ -1,11 +1,10 @@
 import React, { useRef } from 'react';
 import { InputStyles } from '../styles/InputStyles';
 import { SelectStyles } from '../styles/SelectStyles';
-import { ErrorMessage, FormStyles } from '../styles/ComponentStyles';
-import { DateTime } from 'luxon';
+import { FormStyles } from '../styles/ComponentStyles';
 import Loader from './Loader';
 
-export default function SpendingForm({ onNewItem, error, status }) {
+export default function SpendingForm({ onNewItem, status }) {
 
   const descriptionRef = useRef();
   const amountRef = useRef();
@@ -18,7 +17,7 @@ export default function SpendingForm({ onNewItem, error, status }) {
       description: descriptionRef.current.value,
       amount: amountRef.current.value,
       currency: currencyRef.current.value,
-      spentAt: DateTime.now()
+      spentAt: new Date()
     }
 
     onNewItem(spendingItem);
@@ -39,7 +38,6 @@ export default function SpendingForm({ onNewItem, error, status }) {
 
   return (
     <>
-      {(error) && <ErrorMessage> Could not save spending. Please try again later. </ErrorMessage>}
       <FormStyles onSubmit={submitHandler}>
         <InputStyles
           type='text'

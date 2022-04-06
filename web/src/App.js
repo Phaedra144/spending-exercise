@@ -16,10 +16,9 @@ export default function App() {
     error: getSendingError,
     status: getSendingStatus
   } = useHttp(getAllSpendings, true);
-  
+
   const { 
     sendRequest: addSpending, 
-    error: createSendingError, 
     status: createSendingStatus 
   } = useHttp(createSpending, false);
 
@@ -41,7 +40,6 @@ export default function App() {
       <Layout>
         <SpendingForm
           onNewItem={newSpendingHandler}
-          error={createSendingError}
           status={createSendingStatus}
         />
         <FiltersAndOrderings />
