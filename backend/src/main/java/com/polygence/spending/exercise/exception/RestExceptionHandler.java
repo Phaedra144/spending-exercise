@@ -1,6 +1,5 @@
 package com.polygence.spending.exercise.exception;
 
-import com.polygence.spending.exercise.model.SpendingItem;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.ResponseEntity;

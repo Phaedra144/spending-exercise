@@ -1,6 +1,6 @@
 package com.polygence.spending.exercise.controller;
 
-import com.polygence.spending.exercise.model.SpendingItem;
+import com.polygence.spending.exercise.dto.SpendingItem;
 import com.polygence.spending.exercise.service.SpendingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

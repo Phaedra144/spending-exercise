@@ -1,4 +1,4 @@
-package com.polygence.spending.exercise.model;
+package com.polygence.spending.exercise.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

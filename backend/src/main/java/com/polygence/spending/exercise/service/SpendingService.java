@@ -1,7 +1,7 @@
 package com.polygence.spending.exercise.service;
 
 import com.polygence.spending.exercise.entity.Spending;
-import com.polygence.spending.exercise.model.SpendingItem;
+import com.polygence.spending.exercise.dto.SpendingItem;
 import com.polygence.spending.exercise.repository.SpendingRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
