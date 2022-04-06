@@ -21,7 +21,7 @@ public class SpendingExerciseApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        spendingService.createSpendingItem(new SpendingItem("Book", 2400, LocalDateTime.now(), "USD"));
-        spendingService.createSpendingItem(new SpendingItem("Trousers", 1670000, LocalDateTime.now(), "HUF"));
+        spendingService.createSpendingItem(new SpendingItem("Book", 24, LocalDateTime.now(), "USD"));
+        spendingService.createSpendingItem(new SpendingItem("Trousers", 16700, LocalDateTime.now(), "HUF"));
     }
 }
