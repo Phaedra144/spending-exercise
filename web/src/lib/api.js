@@ -8,7 +8,7 @@ export async function getAllSpendings() {
     throw new Error(data.message || 'Could not fetch spendings.');
   }
 
-/*   const transformedSpendings = [];
+  const transformedSpendings = [];
 
   for (const key in data) {
     const spendingObj = {
@@ -17,9 +17,9 @@ export async function getAllSpendings() {
     };
 
     transformedSpendings.push(spendingObj);
-  } */
+  }
 
-  return data;
+  return transformedSpendings;
 }
 
 export async function createSpending(spendingData) {

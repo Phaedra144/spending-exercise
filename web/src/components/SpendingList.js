@@ -8,6 +8,7 @@ import useHttp from "../hooks/use-http";
 export default function SpendingList() {
   const { sendRequest, data: loadedSpendings, error, status } = useHttp(getAllSpendings, true);
 
+  console.log(JSON.stringify(loadedSpendings));
   useEffect(() => {
     sendRequest();
   }, [sendRequest]);
@@ -45,7 +46,7 @@ export default function SpendingList() {
           <SpendingItem
             key={spending.id}
             id={spending.id}
-            date={spending.spent_at}
+            date={spending.spentAt}
             currency={spending.currency}
             description={spending.description}
             amount={spending.amount}

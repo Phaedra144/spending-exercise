@@ -25,7 +25,7 @@ const SpendingItem = ({ id, date, currency, description, amount }) => {
             </TextWrapper>
             <AmountWrapper>
                 <Amount currency={currency}>
-                    {(amount / 100).toFixed(2)}
+                    {currency === 'USD' ? amount.toFixed(2) : amount}
                 </Amount>
             </AmountWrapper>
         </Spending>
