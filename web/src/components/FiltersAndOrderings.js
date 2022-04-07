@@ -1,7 +1,10 @@
-import React, { useState, useEffect } from 'react';
-
+import React from 'react';
 import { FiltersWrapper, Orderings, CurrencyFilters, CurrencyButton } from '../styles/ComponentStyles';
 
+
+const filterSpendings = (spendings, type) => {
+    return spendings.filter(sp => sp.currency === type);
+};
 
 const sortSpendings = (spendings, type, ascending) => {
   return spendings.sort((spendingA, spendingB) => {
@@ -33,23 +36,28 @@ const getOrderType = (selectedValue) => {
 };
 
 
+export default function CurrencyFilter({ spendingList, onSpendingChange, fullList }) {
 
-export default function CurrencyFilter({ spendingList, onSpendingChange }) {
+  const filterHUFHandler = () => {
+    const filteredList = filterSpendings(fullList, 'HUF');
+    onSpendingChange(filteredList);
+  };
 
-  const [orderedFilteredList, setOrderedFilteredList] = useState([]);
+  const filterUSDHandler = () => {
+    const filteredList = filterSpendings(fullList, 'USD');
+    onSpendingChange(filteredList);
+  };
+
+  const revokeFilterHandler = () => {
+    onSpendingChange(fullList);
+  };
 
   const orderingHandler = (event) => {
     const selectedValue = event.target.value;
     console.log('Selected value: ' + selectedValue);
     const sortedList = sortSpendings(spendingList, getType(selectedValue), getOrderType(selectedValue));
-    setOrderedFilteredList(() => {
-      return [...sortedList];
-    });
+    onSpendingChange(sortedList);
   }
-
-  useEffect(() => {
-    onSpendingChange(orderedFilteredList);
-  }, [orderedFilteredList]);
 
   return (
     <>
@@ -65,6 +73,7 @@ export default function CurrencyFilter({ spendingList, onSpendingChange }) {
         <CurrencyFilters>
           <li>
             <CurrencyButton
+              onClick={revokeFilterHandler}
               name=''
             >
               ALL
@@ -72,6 +81,7 @@ export default function CurrencyFilter({ spendingList, onSpendingChange }) {
           </li>
           <li>
             <CurrencyButton
+              onClick={filterHUFHandler}
               name='HUF'
             >
               HUF
@@ -79,6 +89,7 @@ export default function CurrencyFilter({ spendingList, onSpendingChange }) {
           </li>
           <li>
             <CurrencyButton
+              onClick={filterUSDHandler}
               name='USD'
             >
               USD
