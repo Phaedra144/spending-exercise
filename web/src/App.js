@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import FiltersAndOrderings from './components/FiltersAndOrderings';
 import SpendingList from './components/SpendingList';
 import Layout from './components/Layout';
@@ -31,16 +31,14 @@ export default function App() {
     setSpendings(loadedSpendings);
   }, [loadedSpendings]);
 
-  async function newSpendingHandler(spending) {
+  const newSpendingHandler = useCallback(async (spending) => {
     await addRequest(spending);
     getRequest();
-  };
+  }, [addRequest, getRequest]);
 
-  function spendingsModificationHandler(spendingList) {
-    setSpendings(() => {
-      return [...spendingList];
-    });
-  };
+  const spendingsModificationHandler = useCallback((spendingList) => {
+    setSpendings([...spendingList]);
+  }, []);
 
   return (
     <>
@@ -53,6 +51,7 @@ export default function App() {
         <FiltersAndOrderings
           spendingList={spendings}
           onSpendingChange={spendingsModificationHandler}
+          fullList={loadedSpendings}
         />
         <SpendingList
           data={spendings}
