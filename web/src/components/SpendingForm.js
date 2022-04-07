@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { InputStyles } from '../styles/InputStyles';
 import { SelectStyles } from '../styles/SelectStyles';
-import { FormStyles } from '../styles/ComponentStyles';
+import { ErrorMessage, FormStyles } from '../styles/ComponentStyles';
 import Loader from './Loader';
 
 export default function SpendingForm({ onNewItem, errorHttp, status }) {
@@ -51,6 +51,7 @@ export default function SpendingForm({ onNewItem, errorHttp, status }) {
 
   return (
     <>
+      {errorHttp && <ErrorMessage>Could not save spending. Please try again later.</ErrorMessage>}
       <FormStyles onSubmit={submitHandler}>
         <InputStyles
           type='text'
