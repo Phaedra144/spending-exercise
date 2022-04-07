@@ -2,8 +2,7 @@ import React from 'react';
 
 import { FiltersWrapper, Orderings, CurrencyFilters, CurrencyButton } from '../styles/ComponentStyles';
 
-export default function CurrencyFilter({
-}) {
+export default function CurrencyFilter({ spendingList, onModifyingList }) {
 
   return (
     <>

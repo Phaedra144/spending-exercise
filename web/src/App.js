@@ -17,10 +17,10 @@ export default function App() {
     status: getSendingStatus
   } = useHttp(getAllSpendings, true);
 
-  const { 
+  const {
     sendRequest: addRequest,
-    error: createSendingError, 
-    status: createSendingStatus 
+    error: createSendingError,
+    status: createSendingStatus
   } = useHttp(createSpending, false);
 
   useEffect(() => {
@@ -36,6 +36,10 @@ export default function App() {
     getRequest();
   };
 
+  function modifiedListHandler(spendings) {
+    setSpendings(spendings);
+  }
+
   return (
     <>
       <Layout>
@@ -44,7 +48,10 @@ export default function App() {
           error={createSendingError}
           status={createSendingStatus}
         />
-        <FiltersAndOrderings />
+        <FiltersAndOrderings
+          onModifyingList={modifiedListHandler}
+          spendingList={spendings}
+        />
         <SpendingList
           data={spendings}
           errorHttp={getSendingError}
