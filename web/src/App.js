@@ -8,7 +8,7 @@ import useHttp from './hooks/use-http';
 
 export default function App() {
 
-  const [spendings, setSpendings] = useState();
+  const [spendings, setSpendings] = useState([]);
 
   const {
     sendRequest: getRequest,
@@ -36,9 +36,11 @@ export default function App() {
     getRequest();
   };
 
-  function modifiedListHandler(spendings) {
-    setSpendings(spendings);
-  }
+  function spendingsModificationHandler(spendingList) {
+    setSpendings(() => {
+      return [...spendingList];
+    });
+  };
 
   return (
     <>
@@ -49,8 +51,8 @@ export default function App() {
           status={createSendingStatus}
         />
         <FiltersAndOrderings
-          onModifyingList={modifiedListHandler}
           spendingList={spendings}
+          onSpendingChange={spendingsModificationHandler}
         />
         <SpendingList
           data={spendings}
