@@ -1,10 +1,11 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import FiltersAndOrderings from './components/FiltersAndOrderings';
 import SpendingList from './components/SpendingList';
 import Layout from './components/Layout';
 import SpendingForm from './components/SpendingForm';
 import { createSpending, getAllSpendings } from './lib/api';
 import useHttp from './hooks/use-http';
+import Ordering from './components/Ordering';
+import CurrencyFilter from './components/CurrencyFilter';
 
 export default function App() {
 
@@ -48,10 +49,13 @@ export default function App() {
           error={createSendingError}
           status={createSendingStatus}
         />
-        <FiltersAndOrderings
+        <Ordering
           spendingList={spendings}
           onSpendingChange={spendingsModificationHandler}
+        />
+        <CurrencyFilter
           fullList={loadedSpendings}
+          onSpendingChange={spendingsModificationHandler}
         />
         <SpendingList
           data={spendings}
