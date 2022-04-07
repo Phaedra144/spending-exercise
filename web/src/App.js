@@ -8,32 +8,32 @@ import useHttp from './hooks/use-http';
 
 export default function App() {
 
-  const [spendings, setSpendings] = useState([]);
+  const [spendings, setSpendings] = useState();
 
   const {
-    sendRequest: getSpendings,
+    sendRequest: getRequest,
     data: loadedSpendings,
     error: getSendingError,
     status: getSendingStatus
   } = useHttp(getAllSpendings, true);
 
   const { 
-    sendRequest: addSpending,
+    sendRequest: addRequest,
     error: createSendingError, 
     status: createSendingStatus 
   } = useHttp(createSpending, false);
 
   useEffect(() => {
-    getSpendings();
-  }, [getSpendings]);
+    getRequest();
+  }, [getRequest]);
 
   useEffect(() => {
     setSpendings(loadedSpendings);
   }, [loadedSpendings]);
 
-  const newSpendingHandler = (spending) => {
-    addSpending(spending);
-    getSpendings();
+  async function newSpendingHandler(spending) {
+    await addRequest(spending);
+    getRequest();
   };
 
   return (
@@ -47,7 +47,7 @@ export default function App() {
         <FiltersAndOrderings />
         <SpendingList
           data={spendings}
-          error={getSendingError}
+          errorHttp={getSendingError}
           status={getSendingStatus}
         />
       </Layout>
