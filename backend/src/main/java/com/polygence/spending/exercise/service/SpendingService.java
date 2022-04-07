@@ -7,6 +7,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -21,6 +22,7 @@ public class SpendingService {
     public List<SpendingItem> getSpendings() {
         return spendingRepository.findAll()
                 .stream().map(sp -> mapper.map(sp, SpendingItem.class))
+                .sorted(Comparator.comparing(SpendingItem::getSpentAt).reversed())
                 .collect(Collectors.toList());
     }
 
