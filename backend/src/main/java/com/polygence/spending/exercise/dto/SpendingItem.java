@@ -11,6 +11,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class SpendingItem {
 
+    private long id;
     private String description;
     private int amount;
     private LocalDateTime spentAt;

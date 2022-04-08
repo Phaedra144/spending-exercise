@@ -23,8 +23,8 @@ public class SpendingExerciseApplication implements CommandLineRunner {
     public void run(String... args) throws Exception {
 
         spendingService.createSpendingItem(
-                new SpendingItem("Book", 24, LocalDateTime.now().minusHours(3), "USD"));
+                new SpendingItem(1, "Book", 24, LocalDateTime.now().minusHours(3), "USD"));
         spendingService.createSpendingItem(
-                new SpendingItem("Trousers", 16700, LocalDateTime.now(), "HUF"));
+                new SpendingItem(2, "Trousers", 16700, LocalDateTime.now(), "HUF"));
     }
 }
