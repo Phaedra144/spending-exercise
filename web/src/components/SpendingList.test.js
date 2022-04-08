@@ -11,7 +11,7 @@ describe('SpendingList component', () => {
             loadedSpendings={spendings}
             status='completed' />);
 
-        const firstElement = screen.queryByText('First spending');
+        const firstElement = screen.getByRole('article');
         expect(firstElement).toBeInTheDocument();
     });
 
@@ -23,16 +23,29 @@ describe('SpendingList component', () => {
         expect(firstElement).toBeNull();
     });
 
-    test('renders Loader when request is pending', () => {
+    test('renders <Loader> when request is pending', () => {
         
         const { getByTestId } = render(<SpendingList status='pending' />);
         expect(getByTestId('loader')).toBeInTheDocument();
     });
 
-/*     test('renders <h1> element "No spendings" when request suceeds, but empty list', () => {
+    test('renders <h1> element "No spendings" when request suceeds, but empty list', () => {
         
-        const { getByTestId } = render(<SpendingList status='pending' />);
-        expect(getByTestId('loader')).toBeInTheDocument();
-    }); */
+        render(<SpendingList loadedSpendings={[]} status='completed' />);
+
+        const h1NoSpendings = screen.getByRole('heading');
+        expect(h1NoSpendings).toBeInTheDocument();
+    });
+
+    test('renders <Error> when request answers with error', () => {
+        
+        render(<SpendingList status='completed' error='Some error message' />);
+        
+        const errorHeading = screen.getByRole('heading');
+        expect(errorHeading).toBeInTheDocument();
+
+        const errorElement = screen.getByText('The server is probably down', {exact: false});
+        expect(errorElement).toBeInTheDocument();
+    });
 
 });
