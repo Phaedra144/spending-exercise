@@ -58,7 +58,7 @@ export default function App() {
           onSpendingChange={spendingsModificationHandler}
         />
         <SpendingList
-          data={spendings}
+          loadedSpendings={spendings}
           errorHttp={getSendingError}
           status={getSendingStatus}
         />

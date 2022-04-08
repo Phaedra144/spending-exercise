@@ -4,7 +4,7 @@ import SpendingItem from "./SpendingItem";
 import { ErrorMessage } from '../styles/ComponentStyles';
 import Loader from './Loader';
 
-export default function SpendingList({ data: loadedSpendings, error, status }) {
+export default function SpendingList({ loadedSpendings, error, status }) {
 
   if (status === 'pending') {
     return (

@@ -27,7 +27,7 @@ export default function SpendingForm({ onNewItem, errorHttp, status }) {
     }
 
     const spendingItem = {
-      id: Math.random().toString(),
+      id: Math.floor(Math.random() * 10000000000).toString(),
       description: enteredDescription,
       amount: eneteredAmount,
       currency: currencyRef.current.value,
