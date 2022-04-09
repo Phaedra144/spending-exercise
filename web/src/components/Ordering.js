@@ -40,16 +40,14 @@ const Ordering = ({ spendingList, onSpendingChange }) => {
     }
 
     return (
-        <FiltersWrapper>
-            <Orderings>
-                <select onChange={orderingHandler}>
-                    <option value='-date'>Sort by Date descending (default)</option>
-                    <option value='date'>Sort by Date ascending</option>
-                    <option value='-amount_in_huf'>Sort by Amount descending</option>
-                    <option value='amount_in_huf'>Sort by Amount ascending</option>
-                </select>
-            </Orderings>
-        </FiltersWrapper>
+        <Orderings>
+            <select onChange={orderingHandler}>
+                <option value='-date'>Sort by Date descending (default)</option>
+                <option value='date'>Sort by Date ascending</option>
+                <option value='-amount_in_huf'>Sort by Amount descending</option>
+                <option value='amount_in_huf'>Sort by Amount ascending</option>
+            </select>
+        </Orderings>
     );
 
 };

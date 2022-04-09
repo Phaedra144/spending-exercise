@@ -6,6 +6,7 @@ import { createSpending, getAllSpendings } from './lib/api';
 import useHttp from './hooks/use-http';
 import Ordering from './components/Ordering';
 import CurrencyFilter from './components/CurrencyFilter';
+import { FiltersWrapper } from './styles/ComponentStyles';
 
 export default function App() {
 
@@ -49,14 +50,16 @@ export default function App() {
           error={createSendingError}
           status={createSendingStatus}
         />
-        <Ordering
-          spendingList={spendings}
-          onSpendingChange={spendingsModificationHandler}
-        />
-        <CurrencyFilter
-          fullList={loadedSpendings}
-          onSpendingChange={spendingsModificationHandler}
-        />
+        <FiltersWrapper>
+          <Ordering
+            spendingList={spendings}
+            onSpendingChange={spendingsModificationHandler}
+          />
+          <CurrencyFilter
+            fullList={loadedSpendings}
+            onSpendingChange={spendingsModificationHandler}
+          />
+        </FiltersWrapper>
         <SpendingList
           loadedSpendings={spendings}
           errorHttp={getSendingError}

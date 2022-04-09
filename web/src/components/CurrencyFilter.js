@@ -25,34 +25,32 @@ export default function CurrencyFilter({ fullList, onSpendingChange }) {
 
   return (
     <>
-      <FiltersWrapper>
-        <CurrencyFilters>
-          <li>
-            <CurrencyButton
-              onClick={revokeFilterHandler}
-              name=''
-            >
-              ALL
-            </CurrencyButton>
-          </li>
-          <li>
-            <CurrencyButton
-              onClick={filterHUFHandler}
-              name='HUF'
-            >
-              HUF
-            </CurrencyButton>
-          </li>
-          <li>
-            <CurrencyButton
-              onClick={filterUSDHandler}
-              name='USD'
-            >
-              USD
-            </CurrencyButton>
-          </li>
-        </CurrencyFilters>
-      </FiltersWrapper>
+      <CurrencyFilters>
+        <li>
+          <CurrencyButton
+            onClick={revokeFilterHandler}
+            name=''
+          >
+            ALL
+          </CurrencyButton>
+        </li>
+        <li>
+          <CurrencyButton
+            onClick={filterHUFHandler}
+            name='HUF'
+          >
+            HUF
+          </CurrencyButton>
+        </li>
+        <li>
+          <CurrencyButton
+            onClick={filterUSDHandler}
+            name='USD'
+          >
+            USD
+          </CurrencyButton>
+        </li>
+      </CurrencyFilters>
     </>
   );
 }
